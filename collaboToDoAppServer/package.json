@@ -1,0 +1,20 @@
+{
+  "name": "CollaboToDoApp",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "node": "node src/index.js",
+    "dev": "nodemon src/index.js",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "license": "MIT",
+  "dependencies": {
+    "apollo-server": "^3.10.0",
+    "bcryptjs": "^2.4.3",
+    "dotenv": "^16.0.1",
+    "graphql": "^16.5.0",
+    "jsonwebtoken": "^8.5.1",
+    "mongodb": "^4.8.1",
+    "nodemon": "^2.0.19"
+  }
+}

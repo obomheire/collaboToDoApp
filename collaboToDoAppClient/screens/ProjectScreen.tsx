@@ -1,8 +1,10 @@
 import { useEffect, useState } from "react";
-import { Alert, FlatList, StyleSheet } from "react-native";
+import { Alert, Button, FlatList, StyleSheet } from "react-native";
 import ProjetItem from "../components/ProjectItem";
 import { Text, View } from "../components/Themed";
 import { useQuery, gql } from "@apollo/client";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useNavigation } from "@react-navigation/native";
 
 const MY_PROJECT = gql`
   query myTaskLists {
@@ -32,6 +34,8 @@ export default function ProjectScreen() {
   //     createdAt: "2020-01-01",
   //   },
   // ]);
+
+  const navigation = useNavigation();
   const [project, setProject] = useState([]);
 
   const { loading, error, data } = useQuery(MY_PROJECT);
@@ -48,8 +52,20 @@ export default function ProjectScreen() {
     }
   }, [data]);
 
+  const logout = async () => {
+    navigation.goBack();
+    return await AsyncStorage.removeItem("token");
+  }
+
   return (
     <View style={styles.container}>
+      <View style={{width: "100%"}}>
+        <Button
+          title="LOGOUT"
+          color="red"
+          onPress={logout}
+        />
+      </View>
       <FlatList
         data={project}
         // keyExtractor={(item) => item.id}

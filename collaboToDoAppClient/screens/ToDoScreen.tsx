@@ -63,7 +63,7 @@ const CREATE_TODO = gql`
 
 export default function ToDoScreen() {
   const [titile, setTitle] = useState<string>("");
-  const [project, setProject] = useState<any>(null);
+    const [project, setProject] = useState<any>(null);
   // const [todos, setTodos] = useState<Items[]>([
   //   {
   //     id: "1",
